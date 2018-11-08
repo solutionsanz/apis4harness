@@ -1,0 +1,13 @@
+{
+    "identityDomain":"identity.us-ashburn-1.oraclecloud.com",
+    "coreServicesDomain":"iaas.us-ashburn-1.oraclecloud.com",
+    "databaseServicesDomain":"database.us-ashburn-1.oraclecloud.com",
+    
+    "tenancyId":"ocid1.tenancy.oc1..aaaaaaaa7gup442a6kvo27atbfnlnjpws7lf7xsc3ig3wu7wc7zdig4wclra",
+    "compartmentId":"ocid1.compartment.oc1..aaaaaaaa4ddg3x2eqqi2jifg7wkpyc6eckg3ddgmipyilk7tynszqgq3a6aq",
+    "apiUserId":"ocid1.user.oc1..aaaaaaaapgr7xhmjhyb7k7zqpvmbn6pseoaw3o77pucuyef6jbrtw7aswgqa",
+    "publicKeyFingerprint":"9e:29:39:59:2b:b1:c9:4f:b5:b5:fa:05:5d:81:ae:1c",
+    "pathToKey":"./ssh/id_rsa_pri.pem",
+
+    "adwInstanceId":"ocid1.autonomousdwdatabase.oc1.iad.abuwcljrfhsosqc6ys7h7xfrpsnxnrmixprc4vyc6ckbnweegnnupq7msqfq"
+}

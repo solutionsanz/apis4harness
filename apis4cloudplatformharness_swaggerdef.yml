@@ -1,0 +1,266 @@
+swagger: "2.0"
+info:
+  description: "This project provides a cloud platform harness to interact via REST APIs with Oracle Autonomous Database (ADW and ATP) to provision new instances, destroy instances or simply to start and stop them."
+  version: "1.2.0"
+  title: "APIs 4 Cloud Platform Harness"
+#  termsOfService: "https://redthunder.blog"
+  contact:
+    email: "carlos.rodriguez.iturria@oracle.com"
+#  license:
+#    name: "Apache 2.0"
+#    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/"
+host: "localhost:3000"
+#basePath: "/nf/gifts"
+#host: "apipdev.oracleau.cloud"
+tags:
+- name: "Services"
+  description: "OCI based cloud services to be created, destroyed or simply started and stoped via APIs."
+  externalDocs:
+    description: "Find out more"
+    url: "https://redthunder.blog"
+schemes:
+#- "https"
+- "http"
+security:
+  - X-MyAPI-Key: []
+paths:
+
+  /services/{service}:
+    get:
+      tags:
+      - "Services"
+      summary: "Finds all provioned Cloud Service instances of type service e.g. All ADW instances."
+      description: "Gets provisioned Cloud Services"
+      operationId: "getAllServicesByType"
+      produces: 
+        - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      responses:
+        200:
+          description: "Returns the full list of Provisioned cloud services or by Service Id."
+          schema:
+            properties:
+              Services:
+                type: "array"
+                items:
+                  $ref: "#/definitions/GetAllCloudServicesResponse"  
+    post:
+      tags:
+      - "Services"
+      summary: "Provisions a new Cloud Service of type 'service' e.g. adw."
+      description: "Returns acknowledgemnt message."
+      operationId: "postServiceByType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - in: "body"
+        name: "body"
+        description: "Details of Cloud Service instance to be added."
+        required: true
+        schema:
+          $ref: "#/definitions/PostNewCloudServiceRequest"
+      responses:
+        200:
+          description: "Returns acknowledgment message."
+          schema:
+            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'
+
+
+  /services/{service}/{ocid}:
+    get:
+      tags:
+      - "Services"
+      summary: "Finds provioned Cloud Service instances of type service e.g. ADW instance by Id."
+      description: "Gets provisioned Cloud Services"
+      operationId: "getServicesByType"
+      produces: 
+        - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - name: "ocid"
+        in: "path"
+        description: "Cloud Service OCID to be retrieved."
+        required: true
+        type: "string"
+        x-example: '12345678abcdef'        
+      responses:
+        200:
+          description: "Returns the full list of Provisioned cloud services or by Service Id."
+          schema:
+            properties:
+              Services:
+                type: "array"
+                items:
+                  $ref: "#/definitions/GetAllCloudServicesResponse"
+                  
+    post:
+      tags:
+      - "Services"
+      summary: "Starts or Stops an existing Cloud Service of type 'service' e.g. adw."
+      description: "Returns acknowledgemnt message."
+      operationId: "startStopServiceByType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - name: "ocid"
+        in: "path"
+        description: "Cloud Service OCID."
+        required: true
+        type: "string"
+        x-example: '12345678abcdef'
+      - name: "action"
+        in: "query"
+        description: "Actions can be: 'start' or 'stop'."
+        required: true
+        type: "string"
+        x-example: 'start'
+      responses:
+        200:
+          description: "Returns acknowledgment message."
+          schema:
+            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'                  
+
+    delete:
+      tags:
+      - "Services"
+      summary: "Deletes a Cloud Service defined by 'service' and id type, e.g. adw"
+      description: "Returns acknowledgment message."
+      operationId: "deleteServiceByType"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - name: "ocid"
+        in: "path"
+        description: "Cloud Service OCID."
+        required: true
+        type: "string"
+        x-example: '12345678abcdef'
+      responses:
+        200:
+          description: "Returns acknowledgment message."
+          schema:
+            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'   
+
+securityDefinitions:
+  X-MyAPI-Key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  GetAllCloudServicesResponse:
+    type: "object"
+    required:
+    - "ocid"
+    - "name"
+    - "type"
+    - "status"
+    - "cpus"
+    - "storageTB"
+    - "details"
+    - "version"
+    properties:
+      ocid:
+        type: "string"
+        example: "12345678abcdef"
+      name:
+        type: "string"
+        example: "ADW_Sandbox_1"
+      type:
+        type: "string"
+        example: "adw"
+      status:
+        type: "string"
+        example: "available"
+      cpus:
+        type: "number"
+        example: "1"
+      storageTB:
+        type: "number"
+        example: "1"
+      details:
+        type: "string"
+        example: "This instance is intended to be used as a sandbox for quick data analysis."
+      version:
+        type: "string"
+        example: "version 18.0.3.3"
+
+  PostNewCloudServiceRequest:
+    type: "object"
+    required:
+    - "name"
+    - "type"
+    - "cpus"
+    - "storageTB"
+    - "details"
+    properties:
+      name:
+        type: "string"
+        example: "ADW_Sandbox_1"
+      type:
+        type: "string"
+        example: "adw"
+      cpus:
+        type: "number"
+        example: "1"
+      storageTB:
+        type: "number"
+        example: "1"
+      details:
+        type: "string"
+        example: "This instance is intended to be used as a sandbox for quick data analysis."
+        
+  AcknowlesgmentCloudServiceResponse:
+    type: "object"
+    required:
+    - "id"
+    - "status"
+    - "message"
+    properties:
+      id:
+        type: "string"
+        example: "202"
+      status:
+        type: "string"
+        example: "accepted"
+      message:
+        type: "string"
+        example: "Request accepted... Work in progress."
+      
+            
+externalDocs:
+  description: "Find out more about our APIs"
+  url: "https://redthunder.blog"

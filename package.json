@@ -1,0 +1,25 @@
+{
+  "name": "APIs4Harness",
+  "version": "1.0.0",
+  "description": "NodeJS microservie that establishes a Cloud Platform Harness to interact with Oracle Autonomous DBs ADW and ATP.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "swagger",
+    "api",
+    "adw",
+    "atp"
+  ],
+  "author": "Carlos Rodriguez Iturria",
+  "license": "MIT",
+  "engines" : { "node" : ">=4.1.0 <5.5.0" },
+  "dependencies": {
+    "body-parser": "^1.6.5",
+    "express": "^4.8.5",
+    "js-yaml": "^3.8.4",
+    "http-signature": "*",
+    "jssha": "*"
+  }
+}
