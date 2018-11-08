@@ -76,7 +76,7 @@ app.get('/anki-saasdemo-ext-apis/v1', function (req, res) {
         console.log("Default HTTPS over HTTP");
 
         // Swap and default HTTPS as first option:
-        swaggerFileDef.schemes = ['HTTPS', 'HTTP'];
+        swaggerFileDef.schemes = ['https', 'http'];
     }
 
     // Returning swagger definition:
