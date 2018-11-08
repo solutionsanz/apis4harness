@@ -5,16 +5,23 @@
 
     "environment": {
 
-        "API_GW_ENABLED":"XXX",
-        "API_GW_SERVER":"XXX",
-        "API_GW_BASEURL":"XXX",
-        "API_GW_PORT":"XXX",
-        "API_GW_USERNAME":"XXX",
-        "API_GW_PASSWORD":"XXX",
-        "MONGODB_SERVER":"XXX",
-        "MONGODB_USERNAME":"XXX",
-        "MONGODB_PASSWORD":"XXX",
-        "MONGODB_PORT":"XXX"
+        "API_GW_ENABLED":"false",
+        "API_GW_SERVER":"apip.oracleau.cloud",
+        "API_GW_BASEURL":"/",
+        "API_GW_PORT":"443",
+        "API_GW_USERNAME":"weblogic",
+        "API_GW_PASSWORD":"welcome1",
+        "identityDomain":"identity.us-ashburn-1.oraclecloud.com",
+        "coreServicesDomain":"iaas.us-ashburn-1.oraclecloud.com",
+        "databaseServicesDomain":"database.us-ashburn-1.oraclecloud.com",
+        
+        "tenancyId":"ocid1.tenancy.oc1..aaaaaaaa7gupxxxxxxxxxxxxx...",
+        "compartmentId":"ocid1.compartment.oc1..aaaaaaaa4xxxxxxxxxxxxx...",
+        "apiUserId":"ocid1.user.oc1..aaaaaaaapgr7xhxxxxxxxxxxxxx...",
+        "publicKeyFingerprint":"9e:29:39:59:2b:b1:c9xxxxxxxxxxxxx...",
+        "pathToKey":"./ssh/id_rsa_pri.pem",
+    
+        "adwInstanceId":"ocid1.autonomousdwdatabase.oc1.xxxxxxx..."   
     }
 
 }
