@@ -17,13 +17,13 @@ module.exports = {
     "coreServicesDomain": process.env.coreServicesDomain || "iaas.us-ashburn-1.oraclecloud.com",
     "databaseServicesDomain": process.env.databaseServicesDomain || "database.us-ashburn-1.oraclecloud.com",
     
-    "tenancyId": process.env.tenancyId || "ocid1.tenancy.oc1..aaaaaaaa7gup442a6kvo27atbfnlnjpws7lf7xsc3ig3wu7wc7zdig4wclra",
-    "compartmentId": process.env.compartmentId || "ocid1.compartment.oc1..aaaaaaaa4ddg3x2eqqi2jifg7wkpyc6eckg3ddgmipyilk7tynszqgq3a6aq",
-    "apiUserId": process.env.apiUserId || "ocid1.user.oc1..aaaaaaaapgr7xhmjhyb7k7zqpvmbn6pseoaw3o77pucuyef6jbrtw7aswgqa",
-    "publicKeyFingerprint": process.env.publicKeyFingerprint || "9e:29:39:59:2b:b1:c9:4f:b5:b5:fa:05:5d:81:ae:1c",
+    "tenancyId": process.env.tenancyId || "ocid1.tenancy.oc1..aaaaaaaa7gup442a6kvo27xxxxxxx...",
+    "compartmentId": process.env.compartmentId || "ocid1.compartment.oc1..aaaaaaaa4xxxxxxx...",
+    "apiUserId": process.env.apiUserId || "ocid1.user.oc1..aaaaaaaapgr7xhmjhyb7k7zqpvmbxxxxxxx...",
+    "publicKeyFingerprint": process.env.publicKeyFingerprint || "9e:29:39:59:2b:b1:xxxx...",
     "pathToKey": process.env.pathToKey || "./ssh/id_rsa_pri.pem",
 
-    "adwInstanceId": process.env.adwInstanceId || "ocid1.autonomousdwdatabase.oc1.iad.abuwcljrfhsosqc6ys7h7xfrpsnxnrmixprc4vyc6ckbnweegnnupq7msqfq",   
+    "adwInstanceId": process.env.adwInstanceId || "ocid1.autonomousdwdatabase.oc1.xxxxxxx...",   
 
     "PORT": process.env.PORT || "3000"
 };

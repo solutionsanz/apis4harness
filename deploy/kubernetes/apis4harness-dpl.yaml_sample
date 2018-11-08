@@ -24,12 +24,16 @@ spec:
       - name: apis4harness
         image: ENTER_IMAGE_TAG_NAME_HERE
         env:
-        - name: NODE_ORACLEDB_USER
-          value: "[Enter ATP Gifts DB username, e.g. gifts_admin]"
-        - name: NODE_ORACLEDB_PASSWORD
-          value: "[Enter ATP Gifts DB password, e.g. Welcome1#Welcome1#]"
-        - name: NODE_ORACLEDB_CONNECTIONSTRING
-          value: "[Enter ATP Gifts DB TNS Name, e.g. critestoltp1_low]"
+        - name: tenancyId
+          value: "ocid1.tenancy.oc1..aaaaaaaa7gxxxxx..."
+        - name: compartmentId
+          value: "ocid1.compartment.oc1..aaaaaaxxxxx..."
+        - name: apiUserId
+          value: "ocid1.user.oc1..aaaaaaaapgr7xhxxxxx..."
+        - name: publicKeyFingerprint
+          value: "9e:29:39:59:2b:b1:c9:4f:b5:bxxxxx..."
+        - name: pathToKey
+          value: "./ssh/id_rsa_pri.pem"          
         - name: PORT
           value: "3000"                    
         ports:
