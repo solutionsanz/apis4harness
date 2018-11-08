@@ -10,7 +10,7 @@ info:
 #    name: "Apache 2.0"
 #    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 basePath: "/"
-host: "APIs4Harness-gse00014296.uscom-east-1.oraclecloud.com"
+host: "localhost:3000"
 #basePath: "/nf/gifts"
 #host: "apipdev.oracleau.cloud"
 tags:
@@ -20,8 +20,8 @@ tags:
     description: "Find out more"
     url: "https://redthunder.blog"
 schemes:
-- "https"
-#- "http"
+#- "https"
+- "http"
 security:
   - X-MyAPI-Key: []
 paths:
