@@ -23,3 +23,5 @@ setEnv
 temp_*
 oci_config.json
 tempK8s/
+
+apis4harness-dpl.yaml
