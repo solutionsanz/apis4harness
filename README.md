@@ -30,7 +30,7 @@ Containerise APIs 4 Harness Application
 
    - Use **setEnv_template** as a reference and create a new file. Called it **setEnv** - In there, set the properties of your OCI environment. If you need help to bring the parameters, [read this reference](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/credentials.htm) or feel free to drop me a question via [LinkedIn](https://www.linkedin.com/in/citurria/). 
 
-   - **Note:** Remember that the public key finger print comes from importing a PEM Public key into the user that you wish to use to invoke the OCI APIs.
+        - **Note:** Remember that the public key finger print comes from importing a PEM Public key into the user that you wish to use to invoke the OCI APIs.
             
    - Switch user to **ubuntu**
 
