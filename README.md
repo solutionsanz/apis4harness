@@ -61,7 +61,7 @@ Containerise APIs 4 Harness Application
 
    - In your host OS, open a browser and go to: **http://localhost:3000** - Test your app. 
     
-   - Once you feel comfortable with the Docker image, push it to Docker Hub or OCI-R, so that you can run it easily on Orcle Container Engine for Kubernetes (OKE).
+   - Once you feel comfortable with the Docker image, push it to Docker Hub or OCI-R, so that you can run it easily on Oracle Container Engine for Kubernetes (OKE).
    
             Note: I assume that you have already created a repository in your DockerHub or OCI-R, for example: cciturria/apis4harness
 
