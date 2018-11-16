@@ -48,11 +48,11 @@ Containerise APIs 4 Harness Application
 
    - Tag the Docker image:
 
-            docker tag [Image_ID] [DockerRepoUsername]/[DockerRepoName]
+            docker tag [Image_ID] [DockerRepoUsername]/[DockerRepoName]:[version]
 
             For example:
 
-                docker tag c26c58862548 cciturria/api4harness
+                docker tag c26c58862548 cciturria/api4harness:1.0
 
             Note, if you are unsure about the actual "image_id", you can use "docker images" to gather all images being generated.
 
@@ -93,7 +93,7 @@ Deploy APIs 4 Harness application in Kubernetes
 
             cd deploy/kubernetes
 
-   - Use the template **apis4harness-dpl.yaml_sample** to create a new file **apis4harness-dpl.yaml** - In this file, at the end, set the Docker image tag name (e.g. xxx/apis4harness:1.0), ATP DB instance username, password and TNS name.
+   - Use the template **apis4harness-dpl.yaml_sample** to create a new file **apis4harness-dpl.yaml** - In this file, at the end, set the Docker image tag name (e.g. xxx/apis4harness:1.0) and all the OCI properties that you used in setEnv.
 
    - Deploy APIs 4 Gifts Kubernetes application resources (deployment, service, ingress)
 
