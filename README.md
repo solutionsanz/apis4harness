@@ -95,7 +95,7 @@ Deploy APIs 4 Harness application in Kubernetes
 
    - Use the template **apis4harness-dpl.yaml_sample** to create a new file **apis4harness-dpl.yaml** - In this file, at the end, set the Docker image tag name (e.g. xxx/apis4harness:1.0) and all the OCI properties that you used in setEnv.
 
-   - Deploy APIs 4 Gifts Kubernetes application resources (deployment, service, ingress)
+   - Deploy APIs 4 Harness Kubernetes application resources (deployment, service, ingress)
 
             ./deploy.sh
             
