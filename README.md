@@ -1,18 +1,18 @@
-APIs 4 Gifts project
+APIs 4 Harness project
 ------
 
-This repository contains the APIs 4 Gifts project. It provides a quick way to consume REST APIs that ultimately will interact with Oracle Autonomous Transaction Processing Database (ATP). 
+This repository contains the APIs 4 Harness project. It provides a quick way to consume OCI REST APIs to list, stop and start OCI resources. 
 
-Containerise APIs 4 Gifts Application
+Containerise APIs 4 Harness Application
 ------
 
    - Ensure you have installed Vagrant on your laptop/PC. If you need help, [read this blog](https://redthunder.blog/2018/02/13/teaching-how-to-use-vagrant-to-simplify-building-local-dev-and-test-environments/). 
 
    - Download or Git clone this Github repo: 
 
-			git clone https://github.com/solutionsanz/APIs4Gifts
+			git clone https://github.com/solutionsanz/apis4harness
 
-   - In a terminal window, change directory to where you cloned/downloaded the repository (APIs 4 Gifts) – Notice that the Vagrantfile is already in there.
+   - In a terminal window, change directory to where you cloned/downloaded the repository (APIs 4 Harness) – Notice that the Vagrantfile is already in there.
 
    - Start up your Vagrant Dev VM:
 
@@ -28,18 +28,9 @@ Containerise APIs 4 Gifts Application
 
             cd /vagrant
 
-   - Create a new directory structure: **oradbInstantClient/network/admin**
+   - Use **setEnv_template** as a reference and create a new file. Called it **setEnv** - In there, set the properties of your OCI environment. If you need help to bring the parameters, [read this reference](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/credentials.htm) or feel free to drop me a question via [LinkedIn](https://www.linkedin.com/in/citurria/). 
 
-            mkdir -p oradbInstantClient/network/admin
-
-   - Assuming that you already have downloaded (1) the Oracle Instant Client and (2) the Client Credentials (Security Wallet) for the ATP instance – [See here otherwise](https://redthunder.blog/2018/08/16/teaching-how-to-get-started-with-autonomous-database-for-oltp/), expand the Oracle Instant Client zip file inside folder: **oradbInstantClient**
-
-   - Now, expand the Oracle Client Credentials (security wallet) zip file inside: **oradbInstantClient/network/admin/**
-
-   - Open the file: **oradbInstantClient/network/admin/sqlnet.ora** and set the **DIRECTORY** value to **/myApp/oradbInstantClient/network/admin** – This value will also align in the Dockerfile. It is used when building your Docker image. 
-
-   - Open **setEnv** properties file and set the Oracle ATP environment system properties. Based on your ATP instance, make sure to set your ATP Gifts DB username (NODE_ORACLEDB_USER), ATP Gifts DB password (NODE_ORACLEDB_PASSWORD) and ATP Gifts DB TNS name (NODE_ORACLEDB_CONNECTIONSTRING). If you need help, [read this blog](https://redthunder.blog/2018/08/22/teaching-how-to-get-microservices-to-consume-oracle-autonomous-transaction-processing-database-atp/)
-
+   - **Note:** Remember that the public key finger print comes from importing a PEM Public key into the user that you wish to use to invoke the OCI APIs.
             
    - Switch user to **ubuntu**
 
@@ -49,23 +40,43 @@ Containerise APIs 4 Gifts Application
 
             docker build .
 
-   - Execute locally your new Docker Image of your APIs 4 Gifts Application:
+   - Execute locally your new Docker Image of your Application:
 
             docker run --env-file setEnv -p 3000:3000 -it [image_id] 
 
-                Note, if you are unsure about the actual "image_id", you can use "docker images" to gather all images being generated.
+            By default port 3000 was configured as a "Port Forward" by vagrant as part of your VM bootstrap during its creation.
 
-                Also note that by default port 3000 was configured as a "Port Forward" by vagrant as part of your VM bootstrap during its creation.
+    - Tag the Docker image:
+
+            docker tag [Image_ID] [DockerRepoUsername]/[DockerRepoName]
+
+            For example:
+
+                docker tag c26c58862548 cciturria/api4harness
+
+            Note, if you are unsure about the actual "image_id", you can use "docker images" to gather all images being generated.
+
+            Also notice that you could have tagged your Docker image at the moment of “docker building” by using -t [user/repoName]
+            
 
    - In your host OS, open a browser and go to: **http://localhost:3000** - Test your app. 
     
-   - Once you feel comfortable with the Docker image, push it to Docker Hub. First, login to Docker Hub:
+   - Once you feel comfortable with the Docker image, push it to Docker Hub or OCI-R, so that you can run it easily on Orcle Container Engine for Kubernetes (OKE).
+   
+            Note: I assume that you have already created a repository in your DockerHub or OCI-R, for example: cciturria/apis4harness
+
+            In Vagrant, login to Docker Hub/OCI-R:
 
             docker login
 
                 Enter docker hub username, password and email.
 
-Deploy APIs 4 Gifts application in Kubernetes
+            docker push [DockerRepoUsername]/[DockerRepoName]
+
+                E.g. docker push cciturria/apis4harness
+
+
+Deploy APIs 4 Harness application in Kubernetes
 ------
 
    - Go to where you have installed and configured **kubectl**.
@@ -74,21 +85,21 @@ Deploy APIs 4 Gifts application in Kubernetes
 
    - Download or Git clone this Github repo: 
 
-            git clone https://github.com/solutionsanz/APIs4Gifts
+            git clone https://github.com/solutionsanz/apis4harness
 
-   - Go to where you cloned/downloaded the repository (APIs 4 Gifts)
+   - Go to where you cloned/downloaded the repository
 
    - Change directory to deploy/kubernetes
 
             cd deploy/kubernetes
 
-   - Use the template **apis4gifts-dpl.yaml_sample** to create a new file **apis4gifts-dpl.yaml** - In this file, at the end, set the Docker image tag name (e.g. xxx/apis4gifts:1.0), ATP DB instance username, password and TNS name.
+   - Use the template **apis4harness-dpl.yaml_sample** to create a new file **apis4harness-dpl.yaml** - In this file, at the end, set the Docker image tag name (e.g. xxx/apis4harness:1.0), ATP DB instance username, password and TNS name.
 
    - Deploy APIs 4 Gifts Kubernetes application resources (deployment, service, ingress)
 
             ./deploy.sh
             
-   - Open up Kubernetes Dashboard UI or equivalent (e.g. WeaveScope) and validate all APIs 4 Gifts resources were deployed successfully.
+   - Open up Kubernetes Dashboard UI or equivalent (e.g. WeaveScope) and validate all APIs 4 Harness resources were deployed successfully.
 
    - Test your application, open a browser and go to: **http://[YOUR_KUBERNETES_LB]/xxx** - Test your app. 
     

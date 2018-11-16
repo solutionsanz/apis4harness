@@ -3,12 +3,12 @@ info:
   description: "This project provides a cloud platform harness to interact via REST APIs with Oracle Autonomous Database (ADW and ATP) to provision new instances, destroy instances or simply to start and stop them."
   version: "1.2.0"
   title: "APIs 4 Cloud Platform Harness"
-#  termsOfService: "https://redthunder.blog"
+  termsOfService: "https://redthunder.blog"
   contact:
     email: "carlos.rodriguez.iturria@oracle.com"
-#  license:
-#    name: "Apache 2.0"
-#    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 basePath: "/"
 host: "localhost:3000"
 #basePath: "/nf/gifts"
@@ -46,11 +46,9 @@ paths:
         200:
           description: "Returns the full list of Provisioned cloud services or by Service Id."
           schema:
-            properties:
-              Services:
-                type: "array"
-                items:
-                  $ref: "#/definitions/GetAllCloudServicesResponse"  
+            type: "array"
+            items:
+              $ref: "#/definitions/GetAllCloudServicesResponse"
     post:
       tags:
       - "Services"
@@ -108,10 +106,8 @@ paths:
           description: "Returns the full list of Provisioned cloud services or by Service Id."
           schema:
             properties:
-              Services:
-                type: "array"
-                items:
-                  $ref: "#/definitions/GetAllCloudServicesResponse"
+              Service:
+                $ref: "#/definitions/GetAllCloudServicesResponse"
                   
     post:
       tags:

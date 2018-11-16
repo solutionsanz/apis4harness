@@ -56,9 +56,42 @@ module.exports = function (app) {
 
                     console.log(data);
 
+                    var arrADWInstances = [];
+                    var ADWInstance = {};
+
+                    // Building Response:
+                    if (Array.isArray(data)) {
+
+                        var ocid = "";
+                        var name = "";
+                        var type = "";
+                        var type = "";
+                        var cpus = "";
+                        var storageTB = "";
+                        var details = "";
+                        var version = "";
+
+                        for (var i = 0; i < data.length; ++i) {
+
+                            ADWInstance = {
+                                ocid: data[i].id,
+                                name: data[i].dbName,
+                                type: "adw",
+                                status: data[i].lifecycleState,
+                                cpus: data[i].cpuCoreCount,
+                                storageTB: data[i].dataStorageSizeInTBs,
+                                details: "timeCreated:" + data[i].timeCreated,
+                                version: data[i].dbVersion
+                            };
+
+                            arrADWInstances.push(ADWInstance);
+                        }
+
+                    }
+
                     // Returning result
                     res.send({
-                        "Services": data
+                        "Services": arrADWInstances
                     });
                 });
 
@@ -75,6 +108,7 @@ module.exports = function (app) {
 
         }
     });
+
 
     /* POST /services/{service}/{ocid} - To start / stop services... e.g. adw, atp... */
     app.post('/services/:service/:ocid', function (req, res) {
@@ -135,6 +169,87 @@ module.exports = function (app) {
                 });
         }
 
+    });
+
+    /* GET /services/{service}/{ocid} - Get a provisioned instance by OCID... e.g. an adw instance by OCID. */
+    app.get('/services/:service/:ocid', function (req, res) {
+
+        var service = req.params.service;
+        var ocid = req.params.ocid;
+
+        if (service == null || service == undefined) {
+            log("GET", "/services/{service}/{ocid}", "service template empty or invalid. Nothing to do.");
+            res.status(400).end(); //Bad request...
+            return;
+        }
+        if (ocid == null || ocid == undefined) {
+            log("GET", "/services/{service}/{ocid}", "service ocid template empty or invalid. Nothing to do.");
+            res.status(400).end(); //Bad request...
+            return;
+        }
+
+        log("GET", "/services/{service}/{ocid}", "service type received [" + service + "]");
+
+
+        switch (service.toUpperCase()) {
+
+            case "ADW":
+
+                var ADW_PATH = '/20160918/autonomousDataWarehouses/' + ocid;
+
+                ociUtils.getAPI(ADW_PATH, function (data) {
+
+                    log("GET", "/services/{service}/{ocid}", "Listing ADW Instance:");
+
+                    console.log(data);
+
+                    var ADWInstance = {};
+
+                    // Building Response:
+
+
+                    var ocid = "";
+                    var name = "";
+                    var type = "";
+                    var type = "";
+                    var cpus = "";
+                    var storageTB = "";
+                    var details = "";
+                    var version = "";
+
+                    if (data.id != null && data.id != undefined) {
+
+                        ADWInstance = {
+                            ocid: data.id,
+                            name: data.dbName,
+                            type: "adw",
+                            status: data.lifecycleState,
+                            cpus: data.cpuCoreCount,
+                            storageTB: data.dataStorageSizeInTBs,
+                            details: "timeCreated:" + data.timeCreated,
+                            version: data.dbVersion
+                        };
+
+                    }
+
+                    // Returning result
+                    res.send({
+                        "Service": ADWInstance
+                    });
+                });
+
+                break;
+
+            default:
+
+                log("Work in Progress: Only type 'adw' is implemented for now... Please stay tuned for other amazing capabilities coming soon! ");
+                res.send({
+                    "id": "400",
+                    "status": "rejected",
+                    "message": "Only type 'adw' is implemented for now... Please stay tuned for other amazing capabilities coming soon! "
+                });
+
+        }
     });
 
 
