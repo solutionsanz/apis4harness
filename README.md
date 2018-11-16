@@ -46,7 +46,7 @@ Containerise APIs 4 Harness Application
 
             By default port 3000 was configured as a "Port Forward" by vagrant as part of your VM bootstrap during its creation.
 
-    - Tag the Docker image:
+   - Tag the Docker image:
 
             docker tag [Image_ID] [DockerRepoUsername]/[DockerRepoName]
 
