@@ -97,8 +97,8 @@ Deploy APIs 4 Harness application in Kubernetes
 
    - Deploy APIs 4 Harness Kubernetes application resources (deployment, service, ingress)
 
-            ./deploy.sh
-            
+            ./deploy.sh        
+
    - Open up Kubernetes Dashboard UI or equivalent (e.g. WeaveScope) and validate all APIs 4 Harness resources were deployed successfully.
 
    - Test your application, open a browser and go to: **http://[YOUR_KUBERNETES_LB]/xxx** - Test your app. 
