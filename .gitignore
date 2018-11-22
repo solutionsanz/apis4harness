@@ -19,9 +19,10 @@ apip
 oradbInstantClient/
 
 npm-debug.log
-setEnv
+setEnv*
 temp_*
 oci_config.json
 tempK8s/
 
 apis4harness-dpl.yaml
+APIs4Harness.zip*

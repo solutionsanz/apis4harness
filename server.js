@@ -37,6 +37,9 @@ app.use(function (req, res, next) {
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 
+    // Setting No-cache to avoid the browser to cache it locally.
+    res.setHeader('Cache-Control', "no-cache");
+
     // Pass to next layer of middleware
     next();
 });
