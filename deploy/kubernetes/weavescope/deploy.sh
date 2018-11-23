@@ -1,0 +1,1 @@
+kubectl apply -f /tmp/mgt/env/envMicroSvc/scope.yaml
