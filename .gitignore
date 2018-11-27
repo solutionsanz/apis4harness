@@ -19,7 +19,8 @@ apip
 oradbInstantClient/
 
 npm-debug.log
-setEnv*
+setEnv
+setEnv.sh
 temp_*
 oci_config.json
 tempK8s/
