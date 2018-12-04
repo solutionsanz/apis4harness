@@ -46,9 +46,31 @@ paths:
         200:
           description: "Returns the full list of Provisioned cloud services or by Service Id."
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GetAllCloudServicesResponse"
+            properties:
+              Services:
+                type: "array"
+                items:
+                  $ref: "#/definitions/GetAllCloudServicesResponse"
+          examples:
+            application/json:
+              Services:
+                - ocid: 12345678abcdef
+                  name: ADW_Sandbox_1
+                  type: adw
+                  status: available
+                  cpus: 1
+                  storagetb: 1
+                  details: This instance is intended to be used as a sandbox for quick data analysis
+                  version: version 18.0.3.3
+                - ocid: 87654321fedcba
+                  name: ADW_Sandbox_2
+                  type: adw
+                  status: stopped
+                  cpus: 2
+                  storagetb: 2
+                  details: This instance is intended to be used for testing
+                  version: version 18.0.3.3
+              
     post:
       tags:
       - "Services"
@@ -108,7 +130,18 @@ paths:
             properties:
               Service:
                 $ref: "#/definitions/GetAllCloudServicesResponse"
-                  
+          examples:
+            application/json:
+              Service:
+                - ocid: 12345678abcdef
+                  name: ADW_Sandbox_1
+                  type: adw
+                  status: available
+                  cpus: 1
+                  storagetb: 1
+                  details: This instance is intended to be used as a sandbox for quick data analysis
+                  version: version 18.0.3.3
+                    
     post:
       tags:
       - "Services"
@@ -185,7 +218,7 @@ definitions:
     - "type"
     - "status"
     - "cpus"
-    - "storageTB"
+    - "storagetb"
     - "details"
     - "version"
     properties:
@@ -204,7 +237,7 @@ definitions:
       cpus:
         type: "number"
         example: "1"
-      storageTB:
+      storagetb:
         type: "number"
         example: "1"
       details:
@@ -220,7 +253,7 @@ definitions:
     - "name"
     - "type"
     - "cpus"
-    - "storageTB"
+    - "storagetb"
     - "details"
     properties:
       name:
@@ -232,7 +265,7 @@ definitions:
       cpus:
         type: "number"
         example: "1"
-      storageTB:
+      storagetb:
         type: "number"
         example: "1"
       details:
