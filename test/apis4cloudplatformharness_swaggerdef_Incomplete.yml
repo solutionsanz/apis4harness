@@ -58,16 +58,12 @@ paths:
                   name: ADW_Sandbox_1
                   type: adw
                   status: available
-                  cpus: 1
-                  storagetb: 1
                   details: This instance is intended to be used as a sandbox for quick data analysis
                   version: version 18.0.3.3
                 - ocid: 87654321fedcba
                   name: ADW_Sandbox_2
                   type: adw
                   status: stopped
-                  cpus: 2
-                  storagetb: 2
                   details: This instance is intended to be used for testing
                   version: version 18.0.3.3
               
@@ -137,8 +133,6 @@ paths:
                   name: ADW_Sandbox_1
                   type: adw
                   status: available
-                  cpus: 1
-                  storagetb: 1
                   details: This instance is intended to be used as a sandbox for quick data analysis
                   version: version 18.0.3.3
                     
