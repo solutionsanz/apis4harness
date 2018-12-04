@@ -266,8 +266,7 @@ definitions:
       message:
         type: "string"
         example: "Request accepted... Work in progress."
-      
-            
+                  
 externalDocs:
   description: "Find out more about our APIs"
   url: "https://redthunder.blog"
