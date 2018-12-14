@@ -100,6 +100,35 @@ paths:
           schema:
             $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'
 
+    put:
+      tags:
+      - "Services"
+      summary: "Starts or Stops all existing Cloud Service of type 'service' e.g. adw."
+      description: "Returns acknowledgemnt message."
+      operationId: "startStopAllServiceByType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - name: "action"
+        in: "query"
+        description: "Actions can be: 'start' or 'stop'."
+        required: true
+        type: "string"
+        x-example: 'start'
+      responses:
+        200:
+          description: "Returns acknowledgment message."
+          schema:
+            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'    
+
 
   /services/{service}/{ocid}:
     get:
@@ -142,7 +171,7 @@ paths:
                   details: This instance is intended to be used as a sandbox for quick data analysis
                   version: version 18.0.3.3
                     
-    post:
+    put:
       tags:
       - "Services"
       summary: "Starts or Stops an existing Cloud Service of type 'service' e.g. adw."
@@ -175,7 +204,7 @@ paths:
         200:
           description: "Returns acknowledgment message."
           schema:
-            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'                  
+            $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'          
 
     delete:
       tags:
