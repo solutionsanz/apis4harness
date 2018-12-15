@@ -13,6 +13,10 @@ module.exports = {
     "API_GW_USERNAME": process.env.API_GW_USERNAME || "NA",
     "API_GW_PASSWORD": process.env.API_GW_PASSWORD || "NA",
 
+    "K8S_INGRESS_ENABLED": process.env.API_GW_PASSWORD || "NA",
+    "K8S_INGRESS_PATH": process.env.API_GW_PASSWORD || "/apis4harness",
+
+
     "identityDomain": process.env.identityDomain || "identity.us-ashburn-1.oraclecloud.com",
     "coreServicesDomain": process.env.coreServicesDomain || "iaas.us-ashburn-1.oraclecloud.com",
     "databaseServicesDomain": process.env.databaseServicesDomain || "database.us-ashburn-1.oraclecloud.com",

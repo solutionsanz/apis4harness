@@ -24,6 +24,12 @@ spec:
       - name: apis4harness
         image: ENTER_IMAGE_TAG_NAME_HERE
         env:
+        - name: API_GW_ENABLED
+          value: "true"
+        - name: API_GW_SERVER
+          value: "lbaas.oracleau.clou"
+        - name: API_GW_BASEURL
+          value: "/apis4harness/"
         - name: tenancyId
           value: "ocid1.tenancy.oc1..aaaaaaaa7gxxxxx..."
         - name: compartmentId
