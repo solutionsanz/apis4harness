@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: harness-adw-stop-all
+spec:
+  schedule: "0 20 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: harness-adw-stop-all
+            image: cciturria/ubuntu-curl:1.0
+            args:
+            - /bin/sh
+            - -c
+            - curl -X PUT http://apis4harnessservice.apis4harness.svc.cluster.local:3000/services/adw?action=stop
+          restartPolicy: OnFailure
