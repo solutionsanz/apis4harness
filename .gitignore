@@ -27,3 +27,6 @@ tempK8s/
 
 apis4harness-dpl.yaml
 APIs4Harness.zip*
+
+deploy.sh
+undeploy.sh
