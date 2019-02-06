@@ -22,3 +22,4 @@
     sudo usermod -G docker ubuntu    
     docker --version
 
+    sudo apt-get install docker-ce -y --force-yes
