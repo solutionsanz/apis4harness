@@ -69,7 +69,25 @@
 
 <script src="./swagger-ui-bundle.js"> </script>
 <script src="./swagger-ui-standalone-preset.js"> </script>
+<script src="./tempConfig.js"> </script>
+
 <script>
+  var API_GW_ENABLED = localConfig.API_GW_ENABLED;
+  var prefixPath = "";
+
+  console.log("API_GW_ENABLED is [" + API_GW_ENABLED + "]");
+
+  if (API_GW_ENABLED != null &&
+    API_GW_ENABLED != undefined &&
+    API_GW_ENABLED == "true") {
+
+    prefixPath = localConfig.API_GW_BASEURL;
+
+    console.log("API_GW_ENABLED is set to 'true'. Setting API_GW_BASEURL [" + prefixPath + "]");
+  }
+
+
+
 window.onload = function() {
   // Build a system
   const ui = SwaggerUIBundle({

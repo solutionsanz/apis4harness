@@ -21,6 +21,22 @@ swaggerFileDef = yaml.load(fs.readFileSync(inputfile, {
 //fs.writeFileSync(outputfile, JSON.stringify(swaggerFileDef, null, 2));
 
 
+
+// Reading from local config variables and determining if SwaggerUI should be run within a Gateway, e.g. Traefix/Nginx/Amabassador/Other
+var data = 'localConfig = {"API_GW_ENABLED": "' + config.API_GW_ENABLED + '", "API_GW_BASEURL": "' + config.API_GW_BASEURL + '"};';
+
+console.log("data is [" + data + "]");
+
+fs.writeFile('./swagger-dist/tempConfig.js', data, function (err, data) {
+    if (err) console.log(err);
+    console.log("Successfully written to file [swagger-dist/tempConfig.js]");
+});
+
+
+
+
+
+
 // Add headers
 app.use(function (req, res, next) {
 
