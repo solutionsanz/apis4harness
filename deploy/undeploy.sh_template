@@ -4,4 +4,5 @@
   kubectl delete -f kubernetes/apis4harness-ing.yaml
   kubectl delete -f kubernetes/apis4harness-svc.yaml
   kubectl delete -f kubernetes/apis4harness-dpl.yaml
+  kubectl delete secret ocir-reg --namespace=apis4harness
   kubectl delete namespace apis4harness

@@ -3,6 +3,10 @@
   #apis4atp..
   #git clone --quiet https://github.com/solutionsanz/apis4atp >>/tmp/noise.out && cd apis4atp
   kubectl create namespace apis4harness
+
+  #kubectl create secret docker-registry dhreg --docker-server=https://index.docker.io/v1/ --docker-username=XXXXXX --docker-password=XXXXX --docker-email=XXXX --namespace=apis4harness
+  kubectl create secret docker-registry ocir-reg --docker-server=iad.ocir.io --docker-username=ENTER_ID_DOMAIN/[oracleidentitycloudservice]/ENTER_USERNAME --docker-password=ENTER_TOKEN --docker-email=ENTER_EMAIL --namespace=apis4harness
+
   kubectl create -f kubernetes/apis4harness-dpl.yaml
   kubectl create -f kubernetes/apis4harness-svc.yaml
   kubectl create -f kubernetes/apis4harness-ing.yaml
