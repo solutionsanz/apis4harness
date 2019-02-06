@@ -10,3 +10,9 @@
   kubectl create -f kubernetes/apis4harness-dpl.yaml
   kubectl create -f kubernetes/apis4harness-svc.yaml
   kubectl create -f kubernetes/apis4harness-ing.yaml
+
+  #kubectl create -f harness-adw-stop-all_CronJob.yaml
+  #kubectl get cronjob
+  #kubectl get jobs --watch
+
+
