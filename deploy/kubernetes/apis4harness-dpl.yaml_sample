@@ -27,7 +27,7 @@ spec:
         - name: API_GW_ENABLED
           value: "true"
         - name: API_GW_SERVER
-          value: "lbaas.oracleau.cloud"
+          value: "lbaas.xxxx.xxx"
         - name: API_GW_BASEURL
           value: "/apis4harness"
         - name: tenancyId
