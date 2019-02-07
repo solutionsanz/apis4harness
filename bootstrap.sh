@@ -19,7 +19,8 @@
     echo "############# Installing and configuring Docker for Dev #######################"
 
     sudo apt-get install docker.io -y
-    sudo usermod -G docker ubuntu    
+    sudo usermod -G docker ubuntu
+    sudo usermod -G docker vagrant
     docker --version
 
     sudo add-apt-repository \
