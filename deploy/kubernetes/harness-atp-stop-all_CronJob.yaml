@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-          - name: harness-adw-stop-all
+          - name: harness-atp-stop-all
             image: cciturria/ubuntu-curl:1.0
             args:
             - /bin/sh
