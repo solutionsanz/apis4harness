@@ -12,6 +12,7 @@
   kubectl create -f kubernetes/apis4harness-ing.yaml
 
   #kubectl create -f kubernetes/harness-adw-stop-all_CronJob.yaml
+  #kubectl create -f kubernetes/harness-atp-stop-all_CronJob.yaml
   #kubectl get cronjob
   #kubectl get jobs --watch
 

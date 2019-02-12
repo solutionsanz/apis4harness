@@ -8,3 +8,4 @@
   kubectl delete namespace apis4harness
 
   #kubectl delete cronjob harness-adw-stop-all
+  #kubectl delete cronjob harness-atp-stop-all
