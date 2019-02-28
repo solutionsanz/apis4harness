@@ -30,6 +30,12 @@ spec:
           value: "lbaas.xxxx.xxx"
         - name: API_GW_BASEURL
           value: "/apis4harness"
+        - name: identityDomain
+          value: "identity.xx-xxxxxxx-1.oraclecloud.com"
+        - name: coreServicesDomain
+          value: "iaas.xx-xxxxxxxx-1.oraclecloud.com"
+        - name: databaseServicesDomain
+          value: "database.xx-xxxxxxx-1.oraclecloud.com"
         - name: tenancyId
           value: "ocid1.tenancy.oc1..aaaaaaaa7gxxxxx..."
         - name: compartmentId
