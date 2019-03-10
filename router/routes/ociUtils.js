@@ -73,6 +73,21 @@ function handleRequest(callback) {
         });
     }
 }
+// generates a function to handle empty responses e.g. delete 
+function handleRequestNoResponse(callback) {
+
+    return function (response) {
+        var responseBody = "";
+
+        response.on('data', function (chunk) {
+            responseBody += chunk;
+        });
+
+        response.on('end', function () {
+            callback("Request to delete instance sent...");
+        });
+    }
+}
 
 // gets the user with the specified id
 function getUser(userId, callback) {
@@ -138,6 +153,33 @@ exports.postAPI = function (path, body, callback) {
     };
 
     var request = https.request(options, handleRequest(callback));
+
+    sign(request, {
+        body: body,
+        privateKey: privateKey,
+        keyFingerprint: ociConfig.publicKeyFingerprint,
+        tenancyId: ociConfig.tenancyId,
+        userId: ociConfig.apiUserId
+    });
+
+    request.end(body);
+};
+
+// Let's DELETE APIs to OCI:
+exports.deleteAPI = function (path, body, callback) {
+
+    var options = {
+        host: ociConfig.databaseServicesDomain,
+        path: path,
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
+        }
+    };
+
+    var request = https.request(options, handleRequestNoResponse(callback));
 
     sign(request, {
         body: body,

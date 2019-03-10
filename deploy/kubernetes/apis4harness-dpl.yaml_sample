@@ -45,7 +45,9 @@ spec:
         - name: publicKeyFingerprint
           value: "9e:29:39:59:2b:b1:c9:4f:b5:bxxxxx..."
         - name: pathToKey
-          value: "./ssh/id_rsa_pri.pem"          
+          value: "./ssh/id_rsa_pri.pem"
+        - name: dbpasswd
+          value: "Welcome1#Welcome1#"          
         - name: PORT
           value: "3000"                    
         ports:

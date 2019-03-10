@@ -257,4 +257,87 @@ module.exports = function (app) {
     });
 
 
+
+    /* POST /services/{service} - To provision a new service... e.g. adw, atp... */
+    app.post('/services/atp', function (req, res) {
+
+
+        // Retrieving parameters:
+        var instance = req.body;
+
+        if (instance == null || instance == undefined) {
+            log("POST", "/services/atp", "Instance parameters empty or invalid. Verify request parameters and try again.");
+            res.status(400).end("Instance parameters empty or invalid. Verify request parameters and try again."); //Bad request...
+            return;
+        }
+
+
+        log("POST", "/services/atp", "ocid received [" + instance + "]");
+
+
+        var reqBody = {
+            "compartmentId": ociConfig.compartmentId,
+            "displayName": instance.details,
+            "dbName": instance.name,
+            "adminPassword": ociConfig.dbpasswd,
+            "cpuCoreCount": instance.cpus,
+            "dataStorageSizeInTBs": instance.storagetb
+        };
+
+        log("POST", "/services/atp", "reqBody to send through is [" + JSON.stringify(reqBody) + "]");
+
+        var ADW_COMMAND_PATH = '/20160918/autonomousDatabases';
+        var body = JSON.stringify(reqBody);
+
+        ociUtils.postAPI(ADW_COMMAND_PATH, body, function (data) {
+
+            log("POST", "/services/atp", "Creating new ADW instance:");
+
+            console.log(data);
+
+            // Returning result
+            res.send({
+                "id": "202",
+                "status": "accepted",
+                "message": "Request accepted... Work in progress."
+            });
+        });
+
+    });
+
+
+    /* DELETE /services/{service}/{ocid} - To delete a service... e.g. atp, atp... */
+    app.delete('/services/atp/:ocid', function (req, res) {
+
+        // Retrieving parameters:
+        var ocid = req.params.ocid;
+
+        if (ocid == null || ocid == undefined) {
+            log("DELETE", "/services/atp/{ocid}", "service ocid template empty or invalid. Nothing to do.");
+            res.status(400).end(); //Bad request...
+            return;
+        }
+
+
+        log("DELETE", "/services/atp/:ocid", "Deleting instance ocid [" + ocid + "]");
+
+        var ADW_COMMAND_PATH = '/20160918/autonomousDatabases/' + ocid;
+        var body = JSON.stringify({});
+
+        ociUtils.deleteAPI(ADW_COMMAND_PATH, body, function (data) {
+
+            log("DELETE", "/services/atp", "Deleting ADW instance:");
+
+            console.log(data);
+
+            // Returning result
+            res.send({
+                "id": "202",
+                "status": "accepted",
+                "message": "Request accepted... Work in progress."
+            });
+        });
+
+    });
+
 };

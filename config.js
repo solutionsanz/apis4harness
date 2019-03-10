@@ -27,7 +27,9 @@ module.exports = {
     "publicKeyFingerprint": process.env.publicKeyFingerprint || "9e:29:39:59:2b:b1:xxxx...",
     "pathToKey": process.env.pathToKey || "./ssh/id_rsa_pri.pem",
 
-    "adwInstanceId": process.env.adwInstanceId || "ocid1.autonomousdwdatabase.oc1.xxxxxxx...",   
+    "adwInstanceId": process.env.adwInstanceId || "ocid1.autonomousdwdatabase.oc1.xxxxxxx...", 
+    
+    "dbpasswd": process.env.dbpasswd || "welcome1",
 
     "PORT": process.env.PORT || "3000"
 };

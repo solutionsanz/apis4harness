@@ -287,7 +287,7 @@ definitions:
     properties:
       name:
         type: "string"
-        example: "ADW_Sandbox_1"
+        example: "adwtest1"
       type:
         type: "string"
         example: "adw"
