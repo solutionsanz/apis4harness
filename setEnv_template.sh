@@ -7,3 +7,7 @@ export apiUserId=ocid1.user.oc1..aaaaaaaapgr7xxx.............
 export publicKeyFingerprint=9e:29:39:59:2b:xxx.............
 export pathToKey=./ssh/id_rsa_pri.pem
 export dbpasswd=welcome1
+export SMS_SERVER=lb.xxxx.com
+export SMS_PORT=443
+export SMS_PATH=/notifications/sms
+export VOICE_PATH=/notifications/voice

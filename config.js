@@ -12,6 +12,12 @@ module.exports = {
     "API_GW_PORT": process.env.API_GW_PORT || "NA",
     "API_GW_USERNAME": process.env.API_GW_USERNAME || "NA",
     "API_GW_PASSWORD": process.env.API_GW_PASSWORD || "NA",
+    
+    "SMS_SERVER": process.env.SMS_SERVER || "NA",
+    "SMS_PORT": process.env.SMS_PORT || "NA",
+    "SMS_PATH": process.env.SMS_PATH || "NA",
+    "VOICE_PATH": process.env.VOICE_PATH || "NA",
+    
 
     "K8S_INGRESS_ENABLED": process.env.API_GW_PASSWORD || "NA",
     "K8S_INGRESS_PATH": process.env.API_GW_PASSWORD || "/apis4harness",

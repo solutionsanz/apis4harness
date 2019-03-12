@@ -233,6 +233,65 @@ paths:
           schema:
             $ref: '#/definitions/AcknowlesgmentCloudServiceResponse'   
 
+  /services/{service}/notification:
+    post:
+      tags:
+      - "Services"
+      summary: "Finds all provioned Cloud Service instances of type service e.g. All ADW instances and sends a status by SMS."
+      description: "Gets provisioned Cloud Services"
+      operationId: "postCloudServiceNotification"
+      produces: 
+        - "application/json"
+      parameters:
+      - name: "service"
+        in: "path"
+        description: "Cloud Service name to be used e.g. adw or atp."
+        required: true
+        type: "string"
+        x-example: 'adw'
+      - name: "name"
+        in: "query"
+        description: "Recipients name"
+        required: true
+        type: "string"
+        x-example: 'Carlos'
+      - name: "mobile"
+        in: "query"
+        description: "Recipients mobile."
+        required: true
+        type: "string"
+        x-example: '+61441234566'
+      - name: "tenancy"
+        in: "query"
+        description: "Name of tenancy used for reporting."
+        required: true
+        type: "string"
+        x-example: 'fort'
+      - name: "message"
+        in: "query"
+        description: "Message to be included in your notification."
+        required: true
+        type: "string"
+        x-example: 'ADW instances in FORT prior to full start up:'       
+      responses:
+        200:
+          description: "Returns the body of the notification to be sent."
+          schema:
+            properties:
+              notification:
+                $ref: "#/definitions/PostCloudServiceNotificationResponse"
+          examples:
+            application/json:
+              notification:
+                recipients:
+                  - name: Carlos
+                    mobile: 61449577880
+                  - name: Dave
+                    mobile: 61414613678
+                  - name: Franco
+                    mobile: 61446136715
+                tenancy: fort
+
 securityDefinitions:
   X-MyAPI-Key:
     type: "apiKey"
@@ -301,6 +360,37 @@ definitions:
         type: "string"
         example: "This instance is intended to be used as a sandbox for quick data analysis."
         
+  PostCloudServiceNotificationResponse:
+    type: "object"
+    required:
+    - "recipients"
+    - "tenancy"
+    - "message"
+    properties:
+      recipients:
+        type: "array"
+        items:
+          $ref: "#/definitions/recipientsType"
+      tenancy:
+        type: "string"
+        example: "fort"
+      message:
+        type: "string"
+        example: "ADW instances in FORT prior to full start up."
+
+  recipientsType:
+    type: "object"
+    required:
+    - "name"
+    - "mobile"
+    properties:
+      name:
+        type: "string"
+        example: "Carlos"
+      mobile:
+        type: "string"
+        example: "61449599550"
+
   AcknowlesgmentCloudServiceResponse:
     type: "object"
     required:

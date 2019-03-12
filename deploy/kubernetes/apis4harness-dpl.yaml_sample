@@ -49,7 +49,15 @@ spec:
         - name: dbpasswd
           value: "Welcome1#Welcome1#"          
         - name: PORT
-          value: "3000"                    
+          value: "3000"             
+        - name: SMS_SERVER
+          value: "lb.xxxx.com"             
+        - name: SMS_PORT
+          value: "443"             
+        - name: SMS_PATH
+          value: "/notifications/sms"             
+        - name: VOICE_PATH
+          value: "/notifications/voice"                    
         ports:
         - containerPort: 3000
       imagePullSecrets:

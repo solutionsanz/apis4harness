@@ -7,3 +7,7 @@ apiUserId=ocid1.user.oc1..aaaaaaaapgr7xxx.............
 publicKeyFingerprint=9e:29:39:59:2b:xxx.............
 pathToKey=./ssh/id_rsa_pri.pem
 dbpasswd=welcome1
+SMS_SERVER=lb.xxxx.com
+SMS_PORT=443
+SMS_PATH=/notifications/sms
+VOICE_PATH=/notifications/voice
