@@ -1,0 +1,6 @@
+[DEFAULT]
+user=@USER_OCID@
+fingerprint=@PUB_KEY_FINGERPRINT@
+key_file=/home/vagrant/ssh/id_rsa_pri.pem
+tenancy=@TENANCY_OCID@
+region=@REGION_SHORTNAME@
