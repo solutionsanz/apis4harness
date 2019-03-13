@@ -31,3 +31,5 @@ APIs4Harness.zip*
 
 deploy.sh
 undeploy.sh
+
+Vagrantfile
