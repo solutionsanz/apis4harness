@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: harness-adw-stop-all
+  name: harness-adw-start-all
 spec:
   schedule: "0 20 * * *"
   jobTemplate:
@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-          - name: harness-adw-stop-all
+          - name: harness-adw-start-all
             image: cciturria/ubuntu-curl:1.0
             args:
             - /bin/sh
