@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -66,5 +66,5 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
 
   # Where args => "'TENANCY_OCID' 'USER_OCID' 'PUB_KEY_FINGERPRINT' 'OKE_OCID' 'REGION_SHORTNAME' 'INSTALL_KUBECTL_BOOLEAN'"
-  config.vm.provision "shell", path: "bootstrap.sh", args: "'ocid1.tenancy.oc1..aaaaaaaad6lrsgdeldfxmqm3qk6bcxy46yjcqe77ehcb3oovlc52a6bshsda' 'ocid1.user.oc1..aaaaaaaaw7xp66e7xoeo6jhyilv6j4lp4l7keu7xg5b3nknvl7ilwq5s2cnq' '9e:29:39:59:2b:b1:c9:4f:b5:b5:fa:05:5d:81:ae:1c' 'ocid1.cluster.oc1.iad.aaaaaaaaaeydezdcmfrgeyjwgaydkmjygqztkmtcmm3wmyrtgc2tizjyg5rd' 'us-ashburn-1' 'false'"
+  config.vm.provision "shell", path: "bootstrap.sh", args => "'TENANCY_OCID' 'USER_OCID' 'PUB_KEY_FINGERPRINT' 'OKE_OCID' 'REGION_SHORTNAME' 'false'"
 end
