@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: harness-adw-start-all
 spec:
-  schedule: "0 20 * * *"
+  schedule: "0 22 * * *"
   jobTemplate:
     spec:
       template:
