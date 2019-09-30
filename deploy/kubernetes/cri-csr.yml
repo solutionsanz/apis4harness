@@ -3,7 +3,7 @@ kind: CertificateSigningRequest
 metadata:
   name: my-csr-name.my-namespace
 spec:
-  request: $(cat server.csr | base64 | tr -d '\n')
+  request: $(cat id_rsa.csr | base64 | tr -d '\n')
   usages:
   - digital signature
   - key encipherment
