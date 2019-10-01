@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: access-pods-global
+subjects:
+- kind: Group
+  name: carlosgroup # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: carlosgroup-rbac
+  apiGroup: rbac.authorization.k8s.io
