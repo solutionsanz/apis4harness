@@ -8,5 +8,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: cluster-admin
+  name: carlosgroup-rbac
   apiGroup: rbac.authorization.k8s.io
