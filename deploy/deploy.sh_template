@@ -17,3 +17,6 @@
   #kubectl get jobs --watch
 
 
+# Update kubectl if encounter error such as: "unexpected SchemaError"
+#rm /usr/local/bin/kubectl or perhaps: brew uninstall kubectl
+#brew install kubectl
