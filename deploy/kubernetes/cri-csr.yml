@@ -1,11 +1,11 @@
 apiVersion: certificates.k8s.io/v1beta1
 kind: CertificateSigningRequest
 metadata:
-  name: my-csr-name
+  name: mycsr-name
 spec:
   groups:
   - system:authenticated
-  request: ${BASE64_CSR}
+  request: $(cat id_rsa.csr | base64 | tr -d '\n')
   usages:
   - digital signature
   - key encipherment

@@ -4,5 +4,8 @@ metadata:
   name: carlosgroup-rbac
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["get", "list", "watch"]
+  resources: ["pods", "services"]
+  verbs: ["create", "get", "update", "list", "delete", "watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["create", "get", "update", "list", "delete", "watch"]
